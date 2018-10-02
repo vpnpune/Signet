@@ -14,30 +14,33 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.signet.dto.AreaDto;
 import com.signet.dto.CustomerDto;
+import com.signet.dto.DistributorDto;
 import com.signet.handler.AreaHandler;
 import com.signet.handler.CustomerHandler;
+import com.signet.handler.DistributorHandler;
 import com.signet.model.Area;
 import com.signet.model.Customer;
+import com.signet.model.Distributor;
 
 @RestController
-@RequestMapping("/area")
-public class AreaController {
+@RequestMapping("/distributor")
+public class DistributorController {
 
 	@Autowired
-	private AreaHandler handler;
+	private DistributorHandler handler;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Area> area(@PathVariable("id") long id) {
-		return new ResponseEntity<>(handler.getAreaOne(id), HttpStatus.OK);
+	public ResponseEntity<Distributor> distributor(@PathVariable("id") long id) {
+		return new ResponseEntity<>(handler.getDistributorOne(id), HttpStatus.OK);
 	}
 
 	@GetMapping
-	public ResponseEntity<Iterator<Area>> areaList() {
-		return new ResponseEntity<>(handler.getAreas(), HttpStatus.OK);
+	public ResponseEntity<Iterator<Distributor>> distributorList() {
+		return new ResponseEntity<>(handler.getDistributors(), HttpStatus.OK);
 	}
 
 	@PostMapping
-	public ResponseEntity<Area> saveArea(@RequestBody AreaDto dto) {
-		return new ResponseEntity<>(handler.saveArea(dto), HttpStatus.OK);
+	public ResponseEntity<Distributor> saveDistributor(@RequestBody DistributorDto dto) {
+		return new ResponseEntity<>(handler.saveDistributor(dto), HttpStatus.OK);
 	}
 }
