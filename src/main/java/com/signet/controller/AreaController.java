@@ -13,11 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.signet.dto.AreaDto;
-import com.signet.dto.CustomerDto;
 import com.signet.handler.AreaHandler;
-import com.signet.handler.CustomerHandler;
 import com.signet.model.Area;
-import com.signet.model.Customer;
 
 @RestController
 @RequestMapping("/area")

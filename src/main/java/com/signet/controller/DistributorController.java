@@ -12,14 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.signet.dto.AreaDto;
-import com.signet.dto.CustomerDto;
 import com.signet.dto.DistributorDto;
-import com.signet.handler.AreaHandler;
-import com.signet.handler.CustomerHandler;
 import com.signet.handler.DistributorHandler;
-import com.signet.model.Area;
-import com.signet.model.Customer;
 import com.signet.model.Distributor;
 
 @RestController
