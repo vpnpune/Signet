@@ -7,6 +7,6 @@
 5) Populate application.properties with your local mysql credentials.
 6) Create DB
 For Documentation visit : http://localhost:9090/swagger-ui.html after running application.
-#Versions 
+# Versions 
 MySQL = 5.7 
 JDK1.8
