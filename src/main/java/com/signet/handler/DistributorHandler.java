@@ -7,11 +7,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.signet.dto.CustomerDto;
 import com.signet.dto.DistributorDto;
-import com.signet.model.Customer;
 import com.signet.model.Distributor;
-import com.signet.repository.CustomerRepository;
 import com.signet.repository.DistributorRepository;
 
 @Service
