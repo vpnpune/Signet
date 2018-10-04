@@ -1,7 +1,8 @@
 .gradle
 /build/
 !gradle/wrapper/gradle-wrapper.jar
-
+/bin/
+/target/
 ### STS ###
 .apt_generated
 .classpath
@@ -10,6 +11,7 @@
 .settings
 .springBeans
 .sts4-cache
+
 
 ### IntelliJ IDEA ###
 .idea
