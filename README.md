@@ -10,3 +10,9 @@ For Documentation visit : http://localhost:9090/swagger-ui.html after running ap
 # Versions 
 MySQL = 5.7 
 JDK1.8
+
+#Alternatively
+	###run using following scripts
+	>sh build_script.sh <profile>
+	e.g for dev
+	>sh build_script.sh dev
