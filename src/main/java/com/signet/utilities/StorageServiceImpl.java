@@ -27,6 +27,8 @@ public class StorageServiceImpl implements StorageService {
 			"demo");
 	static AmazonS3 s3client;
 
+	
+	
 	static {
 		s3client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials))
 				.withRegion(Regions.AP_SOUTH_1).build();
