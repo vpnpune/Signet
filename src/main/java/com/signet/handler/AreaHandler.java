@@ -31,9 +31,9 @@ public class AreaHandler {
 	}
 
 	public Area saveArea(AreaDto AreaDto) {
-		Area Area = new Area();
-		BeanUtils.copyProperties(AreaDto, Area);
-		return repository.save(Area);
+		Area area = new Area();
+		BeanUtils.copyProperties(AreaDto, area);
+		return repository.save(area);
 	}
 
 }

@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +24,10 @@ public class Area {
 
 	@Column(nullable = false)
 	private String areaName;
-
+	
 	@Column(nullable = false)
 	private String cityName;
+	
+	@Column
+	private int testNumber;
 }

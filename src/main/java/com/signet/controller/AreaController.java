@@ -1,5 +1,6 @@
 package com.signet.controller;
 
+import java.io.IOException;
 import java.util.Iterator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.signet.dto.AreaDto;
 import com.signet.handler.AreaHandler;
 import com.signet.model.Area;
+import com.signet.service.ValidationService;
 
 @RestController
 @RequestMapping("/area")
@@ -22,6 +24,9 @@ public class AreaController {
 
 	@Autowired
 	private AreaHandler handler;
+	
+	@Autowired
+	private ValidationService validationService;
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Area> area(@PathVariable("id") long id) {
@@ -34,7 +39,8 @@ public class AreaController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Area> saveArea(@RequestBody AreaDto dto) {
+	public ResponseEntity<Area> saveArea(@RequestBody AreaDto dto) throws IOException {
+		validationService.validateArea(dto);
 		return new ResponseEntity<>(handler.saveArea(dto), HttpStatus.OK);
 	}
 }
