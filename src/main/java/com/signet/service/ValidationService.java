@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.everit.json.schema.Schema;
 import org.everit.json.schema.loader.SchemaLoader;
+import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 import org.slf4j.Logger;
@@ -39,7 +40,7 @@ public class ValidationService {
 //	@Autowired
 //	private AccountRepository accountRepository;
 
-	public ValidationService() throws IOException {
+	public ValidationService() throws IOException, JSONException {
 		JSONObject rawSchema = new JSONObject(new JSONTokener(
 				Resources.toString(Resources.getResource("schema/Area.json"), Charset.defaultCharset())));
 		Schema schema = SchemaLoader.load(rawSchema);
