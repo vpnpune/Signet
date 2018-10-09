@@ -87,12 +87,16 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.everit.json/org.everit.json.schema -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.everit.json</groupId>
 			<artifactId>org.everit.json.schema</artifactId>
 			<version>1.5.1</version>
-		</dependency>
-
+		</dependency> -->
+		<dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20180130</version>
+        </dependency>
 
 	</dependencies>
 	<build>

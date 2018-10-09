@@ -75,7 +75,7 @@ public class ExceptionController {
 	@ExceptionHandler(ValidationException.class)
 	public ResponseEntity<List<ErrorDto>> handleValidationException(ValidationException e) {
 		final List<ErrorDto> errors = new ArrayList<>();
-		errors.add(new ErrorDto(NOT_VALID, e.getKeyword() ,e.getMessage()));
+		errors.add(new ErrorDto(NOT_VALID, e.getFieldName() ,e.getErrorMessage()));
 		return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
 	}
 	
