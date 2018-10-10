@@ -18,7 +18,6 @@ import com.amazonaws.services.s3.model.Bucket;
 import com.signet.dto.AreaDto;
 import com.signet.handler.AreaHandler;
 import com.signet.model.Area;
-import com.signet.service.ValidationService;
 import com.signet.utilities.StorageService;
 
 @RestController
@@ -28,8 +27,8 @@ public class AreaController {
 	@Autowired
 	private AreaHandler handler;
 	
-	@Autowired
-	private ValidationService validationService;
+	//@Autowired
+	//private ValidationService validationService;
 
 	@Autowired
 	private StorageService service;
@@ -46,7 +45,7 @@ public class AreaController {
 
 	@PostMapping
 	public ResponseEntity<Area> saveArea(@RequestBody AreaDto dto) throws IOException {
-		validationService.validateArea(dto);
+		//validationService.validateArea(dto);
 		return new ResponseEntity<>(handler.saveArea(dto), HttpStatus.OK);
 	}
 	@GetMapping(value = "/aws")

@@ -50,12 +50,13 @@ public class ValidationService {
 	 * Validate create account details.
 	 * 
 	 * @param accountDto
+	 * @throws JSONException 
 	 */
-	public void validateArea(final AreaDto accountDto) throws IOException {
+	public void validateArea(final AreaDto accountDto) throws IOException, JSONException {
 		JSONObject rawSchema = new JSONObject(new JSONTokener(
 				Resources.toString(Resources.getResource("schema/Area.json"), Charset.defaultCharset())));
 		Schema schema = SchemaLoader.load(rawSchema);
-		schema.validate(new JSONObject(accountDto));
+		//schema.validate(new JSONObject(accountDto));
 //		validateSchema(schemaParserMap.get(accountDto.getClass()), accountDto);
 //		validateUniqueAccount(accountDto);
 	}

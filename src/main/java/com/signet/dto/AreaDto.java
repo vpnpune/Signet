@@ -15,7 +15,7 @@ public class AreaDto {
 	@JsonProperty(value = "cityName")
 	private String cityName;
 	
-	@JsonProperty(value = "testNumber")
-	private int testNumber;
+//	@JsonProperty(value = "testNumber")
+//	private int testNumber;
 
 }

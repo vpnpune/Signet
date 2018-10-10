@@ -28,6 +28,6 @@ public class Area {
 	@Column(nullable = false)
 	private String cityName;
 	
-	@Column
-	private int testNumber;
+//	@Column
+//	private int testNumber;
 }
