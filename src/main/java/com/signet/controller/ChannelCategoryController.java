@@ -35,7 +35,6 @@ public class ChannelCategoryController {
 
 	@PostMapping
 	public ResponseEntity<ChannelCategory> saveCatgeory(@RequestBody ChannelCategoryDto channelCategoryDto) {
-		ChannelCategoryDto dto = new ChannelCategoryDto(1L,"Sports");
-		return new ResponseEntity<>(handler.saveChannelCategory(dto), HttpStatus.OK);
+		return new ResponseEntity<>(handler.saveChannelCategory(channelCategoryDto), HttpStatus.OK);
 	}
 }

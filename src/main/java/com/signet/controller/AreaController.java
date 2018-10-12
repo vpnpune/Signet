@@ -26,13 +26,12 @@ public class AreaController {
 
 	@Autowired
 	private AreaHandler handler;
+	@Autowired
+	private StorageService service;
 	
 	//@Autowired
 	//private ValidationService validationService;
 
-	@Autowired
-	private StorageService service;
-	
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Area> area(@PathVariable("id") long id) {
 		return new ResponseEntity<>(handler.getAreaOne(id), HttpStatus.OK);
@@ -44,10 +43,10 @@ public class AreaController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Area> saveArea(@RequestBody AreaDto dto) throws IOException {
-		//validationService.validateArea(dto);
+	public ResponseEntity<Area> saveArea(@RequestBody AreaDto dto) {
 		return new ResponseEntity<>(handler.saveArea(dto), HttpStatus.OK);
 	}
+
 	@GetMapping(value = "/aws")
 	public ResponseEntity<String> aws() {
 		List<Bucket> buckets = service.listBuckets();
@@ -69,4 +68,5 @@ public class AreaController {
 		System.out.println(service.getResourceURL("csism", "Document/README.md"));
 		return new ResponseEntity<>("Success", HttpStatus.OK);
 	}
+
 }

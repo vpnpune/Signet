@@ -4,9 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Service;
-import org.springframework.util.FileCopyUtils;
 
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
@@ -23,8 +21,7 @@ import com.amazonaws.services.s3.model.S3ObjectSummary;
 
 @Service
 public class StorageServiceImpl implements StorageService {
-	static AWSCredentials credentials = new BasicAWSCredentials("demo",
-			"demo");
+	static AWSCredentials credentials = new BasicAWSCredentials("demo", "demo");
 	static AmazonS3 s3client;
 
 	static {
@@ -54,7 +51,7 @@ public class StorageServiceImpl implements StorageService {
 			}
 		}
 		PutObjectResult result = s3client.putObject(bucketName, "Document/README.md", new File("README.md"));
-		String url=getResourceURL(bucketName, "Document/README.md");
+		String url = getResourceURL(bucketName, "Document/README.md");
 		System.out.println(result);
 
 	}
