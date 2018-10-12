@@ -28,6 +28,9 @@ public class AreaController {
 	private AreaHandler handler;
 	@Autowired
 	private StorageService service;
+	
+	//@Autowired
+	//private ValidationService validationService;
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Area> area(@PathVariable("id") long id) {

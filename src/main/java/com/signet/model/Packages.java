@@ -3,10 +3,7 @@ package com.signet.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,18 +13,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Area {
+public class Packages {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="area_seq_gen")
-	@SequenceGenerator(name="area_seq_gen", sequenceName="AREA_SEQ")
+	@GeneratedValue
 	private Long id;
 
 	@Column(nullable = false)
-	private String areaName;
-	
+	private String packageName;
+
 	@Column(nullable = false)
-	private String cityName;
-	
-//	@Column
-//	private int testNumber;
+	private String isHD;
+
+	@Column(nullable = false)
+	private boolean popular;
 }
