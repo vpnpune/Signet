@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.validation.Valid;
+
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +21,7 @@ import com.amazonaws.services.s3.model.Bucket;
 import com.signet.dto.AreaDto;
 import com.signet.handler.AreaHandler;
 import com.signet.model.Area;
+import com.signet.service.ValidationService;
 import com.signet.utilities.StorageService;
 
 @RestController
@@ -29,8 +33,8 @@ public class AreaController {
 	@Autowired
 	private StorageService service;
 	
-	//@Autowired
-	//private ValidationService validationService;
+	@Autowired
+	private ValidationService validationService;
 
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<Area> area(@PathVariable("id") long id) {
@@ -44,6 +48,15 @@ public class AreaController {
 
 	@PostMapping
 	public ResponseEntity<Area> saveArea(@RequestBody AreaDto dto) {
+		try {
+			validationService.validateArea(dto);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return new ResponseEntity<>(handler.saveArea(dto), HttpStatus.OK);
 	}
 

@@ -10,6 +10,10 @@ public final class ErrorCodeConstants {
 	public static final String BV_ACCOUNT_AlREADY_EXISTS = "BV_1001";
 	public static final String BV_ACCOUNT_OVERDRAWN = "BV_1002";
 	
+	public static final String REQUIRED = "required";
+	public static final String MIN_LENGTH = "minLength";
+	public static final String MAX_LENGTH = "maxLength";
+	
 	private ErrorCodeConstants() {
 		
 	}
