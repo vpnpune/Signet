@@ -1,10 +1,8 @@
 package com.signet.dto;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 public class ErrorDto {
 
 	protected String code;
@@ -14,6 +12,10 @@ public class ErrorDto {
 	protected String message;
 	
 	protected String errorValue;
+	
+	public ErrorDto() {
+		
+	}
 	
 	public ErrorDto(String code, String field, String message) {
 		this.code = code;
