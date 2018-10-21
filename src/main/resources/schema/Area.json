@@ -5,12 +5,11 @@
 	"properties": {
 		"areaName": {
 			"type": "string",
-			"maxLength": 6
+			"minLength": 3
 		},
 		"cityName": {
-			"type": "number",
-			"maximum": 100000,
-			"pattern": "^[0-9]{1,5}(\\.[0-9]{1,2})?$"
+			"type": "string",
+			"minLength": 3
 		}
 	},
 	"required": [
