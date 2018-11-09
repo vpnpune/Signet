@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.signet.dto.ErrorDto;
@@ -23,6 +24,7 @@ import com.signet.exception.NotFoundException;
 
 
 @ControllerAdvice
+@CrossOrigin
 public class ExceptionController {
 
 	private final static String VALIDATION_MESSAGE = "Validation failed";
