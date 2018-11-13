@@ -21,9 +21,9 @@ public class DistributorHandler {
 		Optional<Distributor> distributorOptional = repository.findById(id);
 
 		if (distributorOptional.isPresent()) {
-			return null;
+			return distributorOptional.get();
 		}
-		return distributorOptional.get();
+		return null;
 	}
 
 	public Iterator<Distributor> getDistributors() {

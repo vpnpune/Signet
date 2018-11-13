@@ -21,9 +21,9 @@ public class AreaHandler {
 		Optional<Area> areaOptional = repository.findById(id);
 
 		if (areaOptional.isPresent()) {
-			return null;
+			return areaOptional.get();
 		}
-		return areaOptional.get();
+		return null;
 	}
 
 	public Iterator<Area> getAreas() {

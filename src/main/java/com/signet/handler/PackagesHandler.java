@@ -21,9 +21,9 @@ public class PackagesHandler {
 		Optional<Packages> packagesOptional = repository.findById(id);
 
 		if (packagesOptional.isPresent()) {
-			return null;
+			return packagesOptional.get();
 		}
-		return packagesOptional.get();
+		return null;
 	}
 
 	public Iterator<Packages> getPackages() {

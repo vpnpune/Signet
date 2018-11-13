@@ -21,9 +21,9 @@ public class CustomerHandler {
 		Optional<Customer> customerOptional = customerRepository.findById(id);
 		
 		if(customerOptional.isPresent()) {
-			return null;
+			return customerOptional.get();
 		}
-		return customerOptional.get();
+		return null;
 	}
 	
 	public Iterator<Customer> getCustomers() {

@@ -21,9 +21,9 @@ public class ChannelsHandler {
 		Optional<Channels> categoryOptional = repository.findById(id);
 
 		if (categoryOptional.isPresent()) {
-			return null;
+			return categoryOptional.get();
 		}
-		return categoryOptional.get();
+		return null;
 	}
 
 	public Iterator<Channels> getchannels() {
