@@ -7,7 +7,7 @@ public class ChannelsDto {
 	
 	private Long id;
 	
-	private String channelCategoryId;
+	private long channelCategoryId;
 
 	private String name;
 

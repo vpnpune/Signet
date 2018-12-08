@@ -1,13 +1,12 @@
 package com.signet.model;
 
+import java.time.LocalDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -21,27 +20,28 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Distributor {
-
+public class Event {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO, generator="distributor_seq_gen")
-	@SequenceGenerator(name="distributor_seq_gen", sequenceName="DISTRIBUTOR_SEQ")
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="area_seq_gen")
+	@SequenceGenerator(name="area_seq_gen", sequenceName="AREA_SEQ")
 	private Long id;
-
-	@Column(nullable = false)
-	private String name;
-
-	@Column(nullable = false)
-	private String email;
-
-	@Column(nullable = false)
-	private String address;
-
-	@Column(nullable = false)
-	private String contactNo;
 	
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "area_id", nullable = false)
-	private Area area;
-
+	@Column(nullable = false)
+	private String eventTitle;
+	
+	@Column(nullable = false)
+	private String eventDetails;
+	
+	@Column(nullable = false)
+	private LocalDateTime eventStartTime;
+	
+	@Column(nullable = false)
+	private LocalDateTime endTime;
+	
+	@Column(nullable = false)
+	private boolean completed;
+	
+	@Column(nullable = false)
+	private String streamingURL;
+	
 }

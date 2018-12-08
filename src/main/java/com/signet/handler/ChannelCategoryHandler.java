@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.signet.dto.ChannelCategoryDto;
+import com.signet.exception.NotFoundException;
 import com.signet.model.ChannelCategory;
 import com.signet.repository.ChannelCategoryRepository;
 
@@ -18,12 +19,8 @@ public class ChannelCategoryHandler {
 	private ChannelCategoryRepository repository;
 
 	public ChannelCategory getChannelCategoryOne(Long id) {
-		Optional<ChannelCategory> categoryOptional = repository.findById(id);
-
-		if (categoryOptional.isPresent()) {
-			return categoryOptional.get();
-		}
-		return null;
+		return repository.findById(id).
+		orElseThrow(() -> new NotFoundException("channelCategoryId", String.valueOf(id)));
 	}
 
 	public Iterator<ChannelCategory> getChannelCategory() {
@@ -34,6 +31,21 @@ public class ChannelCategoryHandler {
 		ChannelCategory channelCategory = new ChannelCategory();
 		BeanUtils.copyProperties(channelCategoryDto, channelCategory);
 		return repository.save(channelCategory);
+	}
+	
+	public ChannelCategory updateChannelCategory(long id, ChannelCategoryDto channelCategoryDto) {
+		ChannelCategory channelCategoryEntity = repository.findById(id).
+				orElseThrow(() -> new NotFoundException("channelCategoryId", String.valueOf(id)));
+		channelCategoryEntity.setCategoryName(channelCategoryDto.getCategoryName());
+
+	    return repository.save(channelCategoryEntity);
+	}
+
+	public boolean deleteChannelCategory(Long id) {
+		ChannelCategory channelCategoryEntity = repository.findById(id).
+				orElseThrow(() -> new NotFoundException("channelCategoryId", String.valueOf(id)));
+		repository.delete(channelCategoryEntity);
+		return true;
 	}
 
 }

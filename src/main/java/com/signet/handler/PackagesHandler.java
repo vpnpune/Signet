@@ -36,4 +36,19 @@ public class PackagesHandler {
 		return repository.save(packages);
 	}
 
+	public Packages updatePackages(Long id, PackagesDto packagesDto) {
+		Packages packageEntity = getPackagesOne(id);
+		packageEntity.setIsHD(packagesDto.getIsHD());
+		packageEntity.setPackageName(packagesDto.getPackageName());
+		packageEntity.setPopular(packagesDto.isPopular());
+
+	    return repository.save(packageEntity);
+	}
+
+	public boolean deletePackages(Long id) {
+		Packages packageEntity = getPackagesOne(id);
+		repository.delete(packageEntity);
+		return true;
+	}
+
 }

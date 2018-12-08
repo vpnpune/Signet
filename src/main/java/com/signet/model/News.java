@@ -1,12 +1,16 @@
 package com.signet.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -19,35 +23,35 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Channels {
+public class News {
+	
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.AUTO, generator="news_seq_gen")
+	@SequenceGenerator(name="news_seq_gen", sequenceName="NEWS_SEQ")
 	private Long id;
 
+	@Column(nullable = false)
+	private String title;
+
+	@Column(nullable = false)
+	private String description;
+
+	@Column(nullable = false)
+	private LocalDate startTime;
+
+	@Column(nullable = false)
+	private LocalDate endTime;
+	
+	@Column(nullable = false)
+	private LocalDate addedOn;
+	
+	@Column(nullable = false)
+	private boolean archived;
+	
+	@Column(nullable = false)
+	private boolean alert;
+	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "channel_category_id", nullable = false)
-	private ChannelCategory channelCategory;
-
-	@Column(nullable = false)
-	private String name;
-
-	@Column(nullable = false)
-	private String network;
-
-	@Column(nullable = false)
-	private String channelNo;
-
-	@Column(nullable = false)
-	private String rate;
-
-	@Column(nullable = false)
-	private String logoCDNLink;
-
-	@Column(nullable = false)
-	private String thumbnailCDNLink;
-	
-	public void setChannelCategory(ChannelCategory channelCategory) {
-        this.channelCategory = channelCategory;
-    }
-	
+    @JoinColumn(name = "area_id", nullable = false)
+	private Area area;
 }

@@ -6,9 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +28,7 @@ public class PackagesController {
 	private PackagesHandler handler;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Packages> packages(@PathVariable("id") long id) {
+	public ResponseEntity<Packages> getPackages(@PathVariable("id") long id) {
 		return new ResponseEntity<>(handler.getPackagesOne(id), HttpStatus.OK);
 	}
 
@@ -38,5 +40,16 @@ public class PackagesController {
 	@PostMapping
 	public ResponseEntity<Packages> savePackages(@RequestBody PackagesDto packagesDto) {
 		return new ResponseEntity<>(handler.savePackages(packagesDto), HttpStatus.OK);
+	}
+	
+	@PutMapping(value="/{id}")
+	public ResponseEntity<Packages> updatePackages(@PathVariable(value = "id") Long id,
+            @RequestBody PackagesDto packagesDto) {
+		return new ResponseEntity<>(handler.updatePackages(id, packagesDto), HttpStatus.OK);
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Boolean> deletePackages(@PathVariable(value = "id") Long id) {
+		return new ResponseEntity<>(handler.deletePackages(id), HttpStatus.OK);
 	}
 }

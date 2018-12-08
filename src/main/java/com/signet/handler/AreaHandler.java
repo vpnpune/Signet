@@ -1,13 +1,13 @@
 package com.signet.handler;
 
 import java.util.Iterator;
-import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.signet.dto.AreaDto;
+import com.signet.exception.NotFoundException;
 import com.signet.model.Area;
 import com.signet.repository.AreaRepository;
 
@@ -18,12 +18,7 @@ public class AreaHandler {
 	private AreaRepository repository;
 
 	public Area getAreaOne(Long id) {
-		Optional<Area> areaOptional = repository.findById(id);
-
-		if (areaOptional.isPresent()) {
-			return areaOptional.get();
-		}
-		return null;
+		return repository.findById(id).orElseThrow(() -> new NotFoundException("areaId", String.valueOf(id)));
 	}
 
 	public Iterator<Area> getAreas() {
@@ -34,6 +29,20 @@ public class AreaHandler {
 		Area area = new Area();
 		BeanUtils.copyProperties(AreaDto, area);
 		return repository.save(area);
+	}
+
+	public Area updateArea(long id, AreaDto areaDto) {
+		Area area = getAreaOne(id);
+		area.setAreaName(areaDto.getAreaName());
+		area.setCityName(areaDto.getCityName());
+
+		return repository.save(area);
+	}
+
+	public boolean deleteArea(Long id) {
+		Area area = getAreaOne(id);
+		repository.delete(area);
+		return true;
 	}
 
 }
