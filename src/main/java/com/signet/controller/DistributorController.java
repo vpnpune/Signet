@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.signet.dto.ChannelsDto;
 import com.signet.dto.DistributorDto;
 import com.signet.handler.DistributorHandler;
-import com.signet.model.Channels;
+import com.signet.model.Channel;
 import com.signet.model.Distributor;
 
 @RestController

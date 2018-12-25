@@ -19,7 +19,7 @@ import com.signet.dto.ChannelCategoryDto;
 import com.signet.dto.ChannelsDto;
 import com.signet.handler.ChannelsHandler;
 import com.signet.model.ChannelCategory;
-import com.signet.model.Channels;
+import com.signet.model.Channel;
 
 @RestController
 @RequestMapping("/channels")
@@ -30,22 +30,22 @@ public class ChannelsController {
 	private ChannelsHandler handler;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Channels> getChannel(@PathVariable("id") long id) {
+	public ResponseEntity<Channel> getChannel(@PathVariable("id") long id) {
 		return new ResponseEntity<>(handler.getChannelsOne(id), HttpStatus.OK);
 	}
 
 	@GetMapping
-	public ResponseEntity<Iterator<Channels>> channelsList() {
+	public ResponseEntity<Iterator<Channel>> channelsList() {
 		return new ResponseEntity<>(handler.getchannels(), HttpStatus.OK);
 	}
 
 	@PostMapping
-	public ResponseEntity<Channels> saveChannel(@RequestBody ChannelsDto channelsDto) {
+	public ResponseEntity<Channel> saveChannel(@RequestBody ChannelsDto channelsDto) {
 		return new ResponseEntity<>(handler.saveChannel(channelsDto), HttpStatus.OK);
 	}
 	
 	@PutMapping(value="/{id}")
-	public ResponseEntity<Channels> updateChannel(@PathVariable(value = "id") Long id,
+	public ResponseEntity<Channel> updateChannel(@PathVariable(value = "id") Long id,
             @RequestBody ChannelsDto channelDto) {
 		return new ResponseEntity<>(handler.updateChannel(id, channelDto), HttpStatus.OK);
 	}

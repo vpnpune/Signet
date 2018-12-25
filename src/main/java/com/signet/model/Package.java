@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Packages {
+public class Package {
 	@Id
 	@GeneratedValue
 	private Long id;

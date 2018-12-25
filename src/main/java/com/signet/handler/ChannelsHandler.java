@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.signet.dto.ChannelsDto;
 import com.signet.exception.NotFoundException;
 import com.signet.model.ChannelCategory;
-import com.signet.model.Channels;
+import com.signet.model.Channel;
 import com.signet.repository.ChannelCategoryRepository;
 import com.signet.repository.ChannelsRepository;
 
@@ -23,17 +23,17 @@ public class ChannelsHandler {
 	@Autowired
 	private ChannelCategoryRepository categoryRepository;
 
-	public Channels getChannelsOne(Long id) {
+	public Channel getChannelsOne(Long id) {
 		return repository.findById(id).
 				orElseThrow(() -> new NotFoundException("channelId", String.valueOf(id)));
 	}
 
-	public Iterator<Channels> getchannels() {
+	public Iterator<Channel> getchannels() {
 		return repository.findAll().iterator();
 	}
 
-	public Channels saveChannel(ChannelsDto channelsDto) {
-		Channels channels= new Channels();
+	public Channel saveChannel(ChannelsDto channelsDto) {
+		Channel channels= new Channel();
 		ChannelCategory channelCategoryEntity = categoryRepository.findById(channelsDto.getChannelCategoryId()).
 				orElseThrow(() -> new NotFoundException("channelCategoryId", String.valueOf(channelsDto.getChannelCategoryId())));
 		channels.setChannelCategory(channelCategoryEntity);
@@ -41,8 +41,8 @@ public class ChannelsHandler {
 		return repository.save(channels);
 	}
 	
-	public Channels updateChannel(long id, ChannelsDto channelDto) {
-		Channels channelEnitity = getChannelsOne(id);
+	public Channel updateChannel(long id, ChannelsDto channelDto) {
+		Channel channelEnitity = getChannelsOne(id);
 		channelEnitity.setChannelNo(channelDto.getChannelNo());
 		ChannelCategory channelCategoryEntity = categoryRepository.findById(channelDto.getChannelCategoryId()).
 				orElseThrow(() -> new NotFoundException("channelCategoryId", String.valueOf(channelDto.getChannelCategoryId())));
@@ -56,7 +56,7 @@ public class ChannelsHandler {
 	}
 
 	public boolean deleteChannel(Long id) {
-		Channels channelEnitity = getChannelsOne(id);
+		Channel channelEnitity = getChannelsOne(id);
 		repository.delete(channelEnitity);
 		return true;
 	}

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.signet.dto.PackagesDto;
 import com.signet.handler.PackagesHandler;
-import com.signet.model.Packages;
+import com.signet.model.Package;
 
 @RestController
 @RequestMapping("/packages")
@@ -28,22 +28,22 @@ public class PackagesController {
 	private PackagesHandler handler;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Packages> getPackages(@PathVariable("id") long id) {
+	public ResponseEntity<Package> getPackages(@PathVariable("id") long id) {
 		return new ResponseEntity<>(handler.getPackagesOne(id), HttpStatus.OK);
 	}
 
 	@GetMapping
-	public ResponseEntity<Iterator<Packages>> packagesList() {
+	public ResponseEntity<Iterator<Package>> packagesList() {
 		return new ResponseEntity<>(handler.getPackages(), HttpStatus.OK);
 	}
 
 	@PostMapping
-	public ResponseEntity<Packages> savePackages(@RequestBody PackagesDto packagesDto) {
+	public ResponseEntity<Package> savePackages(@RequestBody PackagesDto packagesDto) {
 		return new ResponseEntity<>(handler.savePackages(packagesDto), HttpStatus.OK);
 	}
 	
 	@PutMapping(value="/{id}")
-	public ResponseEntity<Packages> updatePackages(@PathVariable(value = "id") Long id,
+	public ResponseEntity<Package> updatePackages(@PathVariable(value = "id") Long id,
             @RequestBody PackagesDto packagesDto) {
 		return new ResponseEntity<>(handler.updatePackages(id, packagesDto), HttpStatus.OK);
 	}
