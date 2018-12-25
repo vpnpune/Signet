@@ -10,25 +10,28 @@ import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Area {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="area_seq_gen")
 	@SequenceGenerator(name="area_seq_gen", sequenceName="AREA_SEQ")
-	private Long id;
+	Long id;
 
 	@Column(nullable = false)
-	private String areaName;
+	String areaName;
 	
 	@Column(nullable = false)
-	private String cityName;
+	String cityName;
 	
 }

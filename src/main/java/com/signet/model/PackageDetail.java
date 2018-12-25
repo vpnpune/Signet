@@ -33,7 +33,7 @@ public class PackageDetail {
     @JoinColumn(name = "package_id", nullable = false)
 	private Package packageId;
 	
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "Channel_id", nullable = false)
-	private Collection<Channel> listOfChannels = new ArrayList<>();
+//	@OneToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "Channel_id", nullable = false)
+	// private Collection<Channel> listOfChannels = new ArrayList<>();
 }
